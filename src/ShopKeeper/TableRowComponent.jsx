@@ -8,13 +8,17 @@
 function TableRowComponent({ item, index }) {
     const totalCost = item.qty * item.unit_cost;
 
+    const formatCurrency = (amount) => {
+        return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+    };
+
     return (
         <tr>
             <td>{index + 1}</td>
             <td>{item.name}</td>
             <td>{item.unit_cost}</td>
             <td>{item.qty}</td>
-            <td>{totalCost}</td>
+            <td>{formatCurrency(totalCost)}</td>
         </tr>
     );
 }
